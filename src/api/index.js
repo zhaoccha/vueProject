@@ -8,6 +8,7 @@ axios.interceptors.response.use(res =>{
 },err =>{
     Promise.reject(err);
 })
+
 // export导出的是一个接口，不能是固定值 
 // 可以提取公共请求地址
 axios.defaults.baseURL = 'http://localhost:3000'
@@ -20,4 +21,6 @@ axios.defaults.baseURL = 'http://localhost:3000'
 const getBanner = ()=>{
     return axios.get('/banner')
 }
+
+
 export {getBanner}
