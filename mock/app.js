@@ -25,6 +25,7 @@ app.get('/banner', (req, res) => {
     res.json({ code: 200, banner })
 })
 // 列表接口 localhost：3000/list
+
 app.get('/list',(req,res)=>{
     readList('list.json').then(data =>{
         res.json({
