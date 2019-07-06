@@ -32,7 +32,9 @@
     bottom:0;
     width:100%;
     height: 58px;
-    border-top:1px solid #ece3ec
+    border-top:1px solid #ece3ec;
+    background:#fff;
+    z-index: 100;
 }
 #nav a {
     flex:1;
@@ -40,6 +42,7 @@
     flex-direction: column;
     text-align: center;
     padding-top:15px;
+
 }
 #nav a i {
     font-size: 26px;

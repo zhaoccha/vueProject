@@ -1,6 +1,7 @@
 <template>
   <swiper :options="swiperOption">
     <!-- key值尽量用id，能不用索引就不用 -->
+    <!-- 下载安装插件swipersliders -->
     <swiper-slide v-for="slide in swiperSlides" :key="slide.imgid"><img :src = 'slide.imgurl'></swiper-slide>
     <div class="swiper-pagination" slot="pagination"></div>
   </swiper>
@@ -12,7 +13,7 @@
   export default {
     name: 'carrousel',
      props:{
-         swiperSlides:{
+         swiperSlides:{//这个名字和Home.vue的自定义属性名对应好
              type:Array,//传值如果是数组或对象，要用函数返回
              default:() =>[5,6,7,8]//不传参走默认值，如果传参，父组件的动态绑定属性名要与props一致改为swiperSlides
      }
@@ -40,6 +41,6 @@
 </style>
 
 
-</style>
+
 
 

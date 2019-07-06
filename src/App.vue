@@ -9,7 +9,7 @@
 // 1.引入导航组件
 import Nav from './components/Nav'
 export default {
-  components:{//2.祖册组件，将组件映射成标签
+  components:{//2.注册组件，将组件映射成标签
   Nav
   }
 }

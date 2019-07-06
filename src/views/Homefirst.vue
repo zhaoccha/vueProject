@@ -28,18 +28,15 @@
 
 // 引入轮播组件
 import Banner from "../components/banner";
-// import { getBanner } from "../api"; //方法一
+import { getBanner } from "../api"; //方法一
 // import  * as obj from '../api'//方法二  obj可以改名字
 import List from "../views/List";
-// import { getList } from "../api";
-import {getHomeAll} from '../api'
-
+import { getList } from "../api";
 export default {
   name: "home",
- created() {
+  created() {
     //ajax异步，越早发送越好，一般放created
-    // this.getSlider(), this.getList(),this.getHomeAll();
-    this.getAll()//合并写法
+    this.getSlider(), this.getList();
   },
   components: {
     Banner,
@@ -47,23 +44,45 @@ export default {
   },
   data() {
     return {
-      slider: [1, 2, 3, 4],//名字要和methods方法中的名字对应
+      slider: [1, 2, 3, 4],
       lists: []
     };
   },
   methods: {
-   async getAll(){
-    //  多个请求完成之后把数据集合到一起
-     let [{banner},{list }] = await getHomeAll();
-     this.slider = banner;
-     this.lists = list
-   }
-}
-}
+    getlist1() {
+      getBanner().then(
+        res => {
+          console.log(res);
+          let { banner } = res;
+          this.slider = banner;
+        },
+        err => {}
+      );
+    },
+    //轮播图请求
+    async getSlider() {
+      try {
+        let { banner } = await getBanner();
+        this.slider = banner;
+      } catch (e) {
+        console.log(e);
+      }
+    },
+    // 列表发送请求
+    async getList() {
+      try {
+        let { list } = await getList();
+        this.lists = list;
+        console.log(this.lists);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  }
+};
 </script>
-
  <style scoped>
- 
+ /* style标签加 scoped 表示样式只对当前组件生效 */
  .container{
    width:100%;
    position: fixed;
@@ -93,4 +112,3 @@ export default {
 }
 
 </style>
-
