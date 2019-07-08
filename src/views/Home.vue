@@ -1,9 +1,8 @@
-<template>
+<template> 
+<div class="container">
   <div class="home"> 
-     <div class="container">
        <h1>This is an home page</h1>
-    <Banner :swiperSlides="slider"/>
-   
+    <Banner :swiperSlides="slider"/> 
     <div class="box">
       <!-- <div class='box-cont' v-for ='item in lists' :key="item.id">
           <img :src = 'item.img'>

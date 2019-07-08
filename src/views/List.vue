@@ -1,5 +1,5 @@
 <template>
-<div class="container">
+<div class="container" ref='scrollele' @scroll ='scmore'>
 <div class="list">
     <h1>This is an list page</h1>
     <div  v-for="item in list" :key = item.id> 
@@ -55,6 +55,24 @@ export default {
       this.page ++;
       // 发送请求拿到下一页数据
       this.getPageList()
+    },
+    scmore(){
+      // 防抖和节流
+      clearTimeout(this.timer)
+  this.timer=  setTimeout(()=>{
+              let scele = this.$refs.scrollele;
+      // let scrollTop = scele.scrollTop;
+      // let scrollHeight = scele.scrollHeight;
+      // let clientHeight = scele.clientHeight;
+      // 可以用结构赋值的方法来简化代码
+      let {scrollTop,scrollHeight,clientHeight} =scele;
+      // 判断都底部加载更多
+      if(scrollTop+scrollHeight+10>clientHeight){
+        console.log('This is buttom');
+        this.loadmore()
+      }
+      },100)
+
     }
   }
 }

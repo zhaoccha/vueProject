@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- history模式实现单页面应用程序 -->
+    <a onclick ="goto('/a')">这是a页面</a>
+    <a onclick ="goto('/b')">这是b页面</a>
+    <div id="app"></div>
+</body>
+<script>
+function goto(path){
+    // console.log(path);
+    history.pushState({},null,path);//不刷新页面改变url
+    // history.replaceState({},null,path);//无法回退
+    if(path =='/a'){
+        app.innerHTML = 'A页面'
+    }
+    if(path =='/b'){
+        app.innerHTML ='B页面'
+    }
+}
+window.addEventListener('popstate',function(){
+    console.log(pathname)
+})
+if(location.pathname =='/a'){
+    app.innerHtml = 'A页面'
+}
+if(location.pathname =='/b'){
+    app.innerHtml = 'B页面'
+}
+</script>
+</html>
